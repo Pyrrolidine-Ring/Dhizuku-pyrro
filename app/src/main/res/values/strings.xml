@@ -2,7 +2,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- General -->
     <string name="app_name" translatable="false">aDhizuku</string>
-    <string name="permission_description">Use Dhizuku\'s API</string>
+    <string name="permission_description">Use aDhizuku\'s API</string>
 
     <!-- Agreement -->
     <string name="agreement_title">Policy</string>
@@ -26,10 +26,10 @@
 
     <!-- Home - Application Management -->
     <string name="home_app_management_title">Application Management</string>
-    <string name="home_app_management_dsp">Apps that have requested or declared Dhizuku will appear here.</string>
+    <string name="home_app_management_dsp">Apps that have requested or declared aDhizuku will appear here.</string>
 
-    <!-- Home - Dhizuku -->
-    <string name="home_dhizuku_title">Activation by Dhizuku</string>
+    <!-- Home - aDhizuku -->
+    <string name="home_dhizuku_title">Activation by aDhizuku</string>
     <string name="home_dhizuku_dsp">This feature allows ownership to be transferred to other apps.</string>
 
     <!-- Home - Shizuku -->
@@ -43,7 +43,7 @@
 
     <!-- Home - Shutdown -->
     <string name="home_shutdown_title">Shutdown</string>
-    <string name="home_shutdown_dsp">The system cannot shut down Dhizuku unless Dhizuku does so voluntarily.</string>
+    <string name="home_shutdown_dsp">The system cannot shut down aDhizuku unless aDhizuku does so voluntarily.</string>
 
     <!-- Home - Deactivate -->
     <string name="home_deactivate_title">Deactivate</string>
@@ -53,7 +53,7 @@
     <string name="confirm_device_owner">Device Owner</string>
     <string name="confirm_profile_owner">Profile Owner</string>
     <string name="profile_owner_warning_title">Warning</string>
-    <string name="profile_owner_warning_dsp">This is a change that should only be made by users who understand its implications. The developers of Dhizuku cannot guarantee anything about unexpected behavior caused by this mode change.</string>
+    <string name="profile_owner_warning_dsp">This is a change that should only be made by users who understand its implications. The developers of aDhizuku cannot guarantee anything about unexpected behavior caused by this mode change.</string>
 
     <!-- Donate -->
     <string name="donate">Donate</string>
@@ -62,11 +62,11 @@
     <string name="donate_hide_confirm_dsp">This cannot be undone from within the app. Are you sure you want to permanently hide the donate button?</string>
 
     <!-- Permission request -->
-    <string name="request_permission_text">Allow <b>%1$s</b> to access Dhizuku?</string>
+    <string name="request_permission_text">Allow <b>%1$s</b> to access aDhizuku?</string>
     <string name="agree">Grant</string>
     <string name="refuse">Deny</string>
     <string name="block_app">Block App</string>
-    <string name="app_blocked_notice">This app is blocked and cannot access Dhizuku</string>
+    <string name="app_blocked_notice">This app is blocked and cannot access aDhizuku</string>
     <string name="unblock_app">Unblock App</string>
     <string name="auto_deny_in">Auto-deny in</string>
     <string name="auto_deny_in_seconds">Auto-deny in %d seconds</string>
@@ -74,18 +74,18 @@
 
     <!-- Settings -->
     <string name="settings">Settings</string>
-    <string name="settings_desc">Configure Dhizuku behavior</string>
-    <string name="enable_dhizuku">Enable Dhizuku</string>
-    <string name="enable_dhizuku_desc">Allow apps to use Dhizuku services</string>
+    <string name="settings_desc">Configure aDhizuku behavior</string>
+    <string name="enable_dhizuku">Enable aDhizuku</string>
+    <string name="enable_dhizuku_desc">Allow apps to use aDhizuku services</string>
     <string name="whitelist_mode">Whitelist Mode</string>
-    <string name="whitelist_mode_desc">Only allow pre-approved apps to use Dhizuku</string>
+    <string name="whitelist_mode_desc">Only allow pre-approved apps to use aDhizuku</string>
     <string name="allow_ownership_changes">Allow ownership changes</string>
     <string name="allow_ownership_changes_desc">Allow clients to change ownership (transfer or clear).\nThis is a security risk.</string>
-    <string name="ownership_change_blocked">Ownership changes are disabled by Dhizuku</string>
+    <string name="ownership_change_blocked">Ownership changes are disabled by aDhizuku</string>
 
     <!-- Service -->
-    <string name="daemon_service_notification_title">Dhizuku Daemon</string>
-    <string name="daemon_service_notification_text">This is a Dhizuku notification to ensure service availability at any time.</string>
+    <string name="daemon_service_notification_title">aDhizuku Daemon</string>
+    <string name="daemon_service_notification_text">This is an aDhizuku notification to ensure service availability at any time.</string>
 
     <!-- OSS Licenses -->
     <string name="oss_licenses">Open source licenses</string>
