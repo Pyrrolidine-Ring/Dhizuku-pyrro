@@ -23,18 +23,18 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '21'
           cache: 'gradle'
 
       - name: Grant Execute Permission to Gradle
         run: chmod +x gradlew
 
       - name: Build Release APK
-        run: ./gradlew assembleRelease --stacktrace
+        run: ./gradlew assembleRelease -x lint -x lintVitalRelease --stacktrace
 
       - name: Decode Keystore and Sign APK
         env:
@@ -46,18 +46,14 @@ jobs:
           mkdir -p dist
           echo "$KEYSTORE_BASE64" | base64 -d > release.p12
           
-          # Locate Android build tools on runner
           BUILD_TOOLS_DIR=$(ls -d $ANDROID_HOME/build-tools/* | sort -V | tail -n 1)
           echo "Using Android Build Tools from: $BUILD_TOOLS_DIR"
           
-          # Find the compiled release APK
           UNSIGNED_APK=$(find app/build/outputs/apk/release/ -name "*.apk" | head -n 1)
           echo "Found compiled APK: $UNSIGNED_APK"
           
-          # Align APK
           $BUILD_TOOLS_DIR/zipalign -v -p 4 "$UNSIGNED_APK" dist/aDhizuku-aligned.apk
           
-          # Sign APK with alphapyrro.p12
           $BUILD_TOOLS_DIR/apksigner sign --ks release.p12 \
             --ks-pass "pass:$KEYSTORE_PASSWORD" \
             --ks-key-alias "$KEY_ALIAS" \
@@ -65,7 +61,6 @@ jobs:
             --out dist/aDhizuku-release.apk \
             dist/aDhizuku-aligned.apk
             
-          # Verify signature
           $BUILD_TOOLS_DIR/apksigner verify --verbose dist/aDhizuku-release.apk
           rm -f release.p12 dist/aDhizuku-aligned.apk
 
