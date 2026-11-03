@@ -1,55 +1,67 @@
-name: Build
+name: Build and Sign aDhizuku
 
 on:
+  workflow_dispatch:
   push:
     branches:
-      - '**'
-    tags-ignore:
+      - main
+      - master
+    tags:
       - 'v*'
-    paths-ignore:
-      - docs/**
-      - fastlane/**
-      - LICENSE
-  pull_request:
-  workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: write
 
 jobs:
   build:
-    name: Build
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
+
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Checkout
-        uses: actions/checkout@v7
-
-      - name: Setup Java
-        uses: actions/setup-java@v6
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: 25
+          java-version: '17'
+          cache: 'gradle'
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v6
+      - name: Setup Android SDK Build Tools
+        uses: android-actions/setup-android@v3
 
-      - name: Set environments
+      - name: Decode Signing Keystore
         run: |
-          repo="$(echo ${GITHUB_REPOSITORY#$GITHUB_REPOSITORY_OWNER/})"
-          version="v$(grep versionName version.properties | awk -F\= '{print $2}')"
-          commit="$(echo ${{ github.sha }} | cut -c-7)"
-          {
-            echo "repo=$repo"
-            echo "version=$version"
-            echo "commit=$commit"
-            echo "artifact=$repo-$version@$commit"
-          } >> $GITHUB_ENV
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > release.p12
+          ls -lh release.p12
 
-      - name: Build
-        run: |
-          ./gradlew --warning-mode=all assembleDebug
-          cp -f app/build/outputs/apk/debug/app-debug.apk "${{ env.artifact }}.apk"
+      - name: Grant Execute Permission to Gradle
+        run: chmod +x gradlew
 
-      - name: Upload
-        uses: actions/upload-artifact@v7
+      - name: Build Release APK
+        run: ./gradlew assembleRelease --stacktrace
+
+      - name: Sign Release APK
+        uses: ralfirza/apk-signer-action@v1.0.1
         with:
-          archive: false
-          path: ${{ env.artifact }}.apk
+          apk-path: app/build/outputs/apk/release/*.apk
+          key-store: release.p12
+          key-store-password: ${{ secrets.KEYSTORE_PASSWORD }}
+          key-alias: ${{ secrets.KEY_ALIAS }}
+          key-password: ${{ secrets.KEY_PASSWORD }}
+
+      - name: Prepare Artifact
+        run: |
+          mkdir -p dist
+          find app/build/outputs/apk/release/ -type f -name "*signed*.apk" -exec cp {} dist/aDhizuku-release.apk \;
+          ls -la dist/
+
+      - name: Upload Signed APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: aDhizuku-signed
+          path: dist/*.apk
+          retention-days: 14
