@@ -1,4 +1,4 @@
-- Deklarace oprávnění samotného Dhizuku
+- Deklarace oprávnění samotného aDhizuku
 - Podpora EMM
 - Vylepšené chování aplikace při převzetí role vlastníka zařízení
 - Oprava služby aby běžela na popředí

@@ -1,4 +1,4 @@
-A Dhizuku funkciói
+A aDhizuku funkciói
 -EMM támogatás
 -Jobb viselkedés amikor DeviceOwner lesz
 -Javítja a szolgáltatást, hogy az előtérben fusson

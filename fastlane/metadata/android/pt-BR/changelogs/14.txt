@@ -1,4 +1,4 @@
-- Declarar a autoridade do próprio Dhizuku
+- Declarar a autoridade do próprio aDhizuku
 - Suporte a EMM
 - Melhorar o comportamento ao se tornar proprietário do dispositivo
 - Corrigir o serviço para ser executado em primeiro plano

@@ -1,4 +1,4 @@
-- Dhizuku erklærer fullmakten selv
+- aDhizuku erklærer fullmakten selv
 - Støtte for EMM
 - Forbedret atferd etter å ha blitt enhetseier
 - Fikset tjeneste til å kjøre i forgrunnen

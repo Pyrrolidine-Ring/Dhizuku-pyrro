@@ -1,4 +1,4 @@
-- Khẳng định sự uy tín của Dhizuku
+- Khẳng định sự uy tín của aDhizuku
 - Hỗ trợ EMM
 - Cải thiện hành vi khi trở thành chủ sở hữu thiết bị
 - Sửa lỗi dịch vụ chạy trên nền trước

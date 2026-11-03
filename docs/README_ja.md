@@ -2,7 +2,7 @@
 |-|-|-|-|-|
 
 
-# Dhizuku
+# aDhizuku
 
 [![ダウンロード](https://img.shields.io/github/downloads/iamr0s/Dhizuku/total?label=ダウンロード)](https://github.com/iamr0s/Dhizuku/releases)
 [![最新版](https://img.shields.io/github/v/release/iamr0s/Dhizuku?label=最新版)](https://github.com/iamr0s/Dhizuku/releases/latest)

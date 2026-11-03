@@ -1,4 +1,4 @@
-- Declaring the authority of Dhizuku itself
+- Declaring the authority of aDhizuku itself
 - Support EMM
 - Improve behavior when becoming device owner
 - Fix service to run in the foreground

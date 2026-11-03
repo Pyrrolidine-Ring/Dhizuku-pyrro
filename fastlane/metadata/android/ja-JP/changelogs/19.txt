@@ -1,2 +1,2 @@
 - プロファイルオーナーの機能を追加
-- Dhizuku-API を改善
+- aDhizuku-API を改善

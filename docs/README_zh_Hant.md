@@ -1,7 +1,7 @@
 [English](README.md) | [简体中文](README_zh_rCN.md) | 繁体中文 | [日本語](README_ja.md) | [Русский](README_ru.md)
 |-|-|-|-|-|
 
-# Dhizuku
+# aDhizuku
 
 [![下載量](https://img.shields.io/github/downloads/iamr0s/Dhizuku/total?label=下載量)](https://github.com/iamr0s/Dhizuku/releases)
 [![最新版本](https://img.shields.io/github/v/release/iamr0s/Dhizuku?label=最新版本)](https://github.com/iamr0s/Dhizuku/releases/latest)

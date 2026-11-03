@@ -1,4 +1,4 @@
-- Vyhlásenie autority samotného Dhizuku
+- Vyhlásenie autority samotného aDhizuku
 - Podpora EMM
 - Zlepšenie správania, keď sa stanete vlastníkom zariadenia
 - Oprava služby, ktorá sa spúšťa v popredí

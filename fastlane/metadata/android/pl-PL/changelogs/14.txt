@@ -1,4 +1,4 @@
-- Deklaracja autoryzacji samego Dhizuku
+- Deklaracja autoryzacji samego aDhizuku
 - Wsparcie EMM
 - Ulepszenie zachowania po przejęciu własności urządzenia
 - Naprawa usługi, aby działała w tle

@@ -1,4 +1,4 @@
-- Déclaration de l'autorité de Dhizuku même
+- Déclaration de l'autorité de aDhizuku même
 - Prise en charge EMM
 - Amélioration du comportement lorsque vous devenez propriétaire d'un appareil
 - Correction du service pour qu'il s'exécute au premier plan

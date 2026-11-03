@@ -1,4 +1,4 @@
-- Pagdedeklara ng awtoridad ng Dhizuku
+- Pagdedeklara ng awtoridad ng aDhizuku
 - Suportahan ang EMM
 - Pagbutihin ang pag-uugali kapag nagiging may-ari ng device
 - Ayusin ang serbisyo upang tumakbo sa harapan

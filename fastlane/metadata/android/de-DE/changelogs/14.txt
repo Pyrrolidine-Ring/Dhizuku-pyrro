@@ -1,4 +1,4 @@
-– Die Autorität von Dhizuku selbst festlegen
+– Die Autorität von aDhizuku selbst festlegen
 – EMM-Unterstützung
 – Verhalten beim Wechsel zum Gerätebesitzer verbessern
 – Repariere Dienst um im Vordergrund zu laufen
