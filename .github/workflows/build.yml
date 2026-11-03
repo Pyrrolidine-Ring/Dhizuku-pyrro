@@ -33,35 +33,42 @@ jobs:
       - name: Setup Android SDK Build Tools
         uses: android-actions/setup-android@v3
 
-      - name: Decode Signing Keystore
-        run: |
-          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > release.p12
-          ls -lh release.p12
-
       - name: Grant Execute Permission to Gradle
         run: chmod +x gradlew
 
       - name: Build Release APK
         run: ./gradlew assembleRelease --stacktrace
 
-      - name: Sign Release APK
-        uses: ralfirza/apk-signer-action@v1.0.1
-        with:
-          apk-path: app/build/outputs/apk/release/*.apk
-          key-store: release.p12
-          key-store-password: ${{ secrets.KEYSTORE_PASSWORD }}
-          key-alias: ${{ secrets.KEY_ALIAS }}
-          key-password: ${{ secrets.KEY_PASSWORD }}
-
-      - name: Prepare Artifact
+      - name: Decode Signing Keystore and Sign APK
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
         run: |
           mkdir -p dist
-          find app/build/outputs/apk/release/ -type f -name "*signed*.apk" -exec cp {} dist/aDhizuku-release.apk \;
-          ls -la dist/
+          echo "$KEYSTORE_BASE64" | base64 -d > release.p12
+          
+          # Find the generated release APK
+          UNSIGNED_APK=$(find app/build/outputs/apk/release/ -name "*.apk" | head -n 1)
+          echo "Found APK: $UNSIGNED_APK"
+          
+          # Align and sign using Android SDK build tools
+          zipalign -v -p 4 "$UNSIGNED_APK" dist/aDhizuku-aligned.apk
+          apksigner sign --ks release.p12 \
+            --ks-pass "pass:$KEYSTORE_PASSWORD" \
+            --ks-key-alias "$KEY_ALIAS" \
+            --key-pass "pass:$KEY_PASSWORD" \
+            --out dist/aDhizuku-release.apk \
+            dist/aDhizuku-aligned.apk
+            
+          # Verify the signature
+          apksigner verify --verbose dist/aDhizuku-release.apk
+          rm -f release.p12 dist/aDhizuku-aligned.apk
 
       - name: Upload Signed APK
         uses: actions/upload-artifact@v4
         with:
           name: aDhizuku-signed
-          path: dist/*.apk
+          path: dist/aDhizuku-release.apk
           retention-days: 14
